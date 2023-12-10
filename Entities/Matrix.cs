@@ -70,6 +70,18 @@ namespace PEATabuSearch.Entities
                 Console.WriteLine();
             }
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="solution"></param>
+        /// <returns></returns>
+        public int GetCost(int[] solution)
+        {
+            var cost = solution.Select((t, i) => GetWeight(t, solution[(i + 1) % solution.Length])).Sum();
+            return cost;
+        }
+
         #endregion
 
     }

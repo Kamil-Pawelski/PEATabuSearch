@@ -1,13 +1,19 @@
-﻿using PEATabuSearch.Entities;
+﻿using PEATabuSearch.Algorithm;
+using PEATabuSearch.Entities;
 using PEATabuSearch.Functionalities;
 
-public class Program
+namespace PEATabuSearch
 {
-    private static void Main(string[] args)
+    public class Program
     {
-        Console.WriteLine("Hello, World!");
-        FileReader fileReader = new();
-        Matrix matrix = fileReader.ReadFile(@"C:\Users\kamil\Desktop\PROJEKTY XDD\PEATabuSearch\Files\ftv47.atsp");
-        matrix.Print();
+        private static void Main()
+        {
+            Console.WriteLine("Hello, World!");
+            FileReader fileReader = new();
+            Matrix matrix = fileReader.ReadFile(@"C:\Users\kamil\Desktop\PROJEKTY XDD\PEATabuSearch\Files\ftv47.atsp");
+            var x = new TabuSearch(matrix);
+            x.ExecuteTabuSearch();
+
+        }
     }
 }
