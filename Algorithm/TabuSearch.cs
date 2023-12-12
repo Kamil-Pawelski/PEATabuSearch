@@ -13,13 +13,13 @@ namespace PEATabuSearch.Algorithm
     /// Klasa wykonująca algorytm tabu search
     /// </summary>
     /// <param name="matrix">macierz reprezentująca graf</param>
-    public class TabuSearch(Matrix matrix)
+    public class TabuSearch(Matrix matrix, double stopTime, int neighbourOption)
     {
         #region Fields
-        private double _stopTime = 120;
+        private double _stopTime = stopTime;
         private readonly Matrix _matrix = matrix;
         private readonly Collection<(int, int)> _tabuList = [];
-        private int _option = 3;
+        private readonly int _option = neighbourOption;
         private readonly int _size = matrix.Size;
         private int[]? _bestSolution;
         private int _solutionCost;
@@ -83,8 +83,6 @@ namespace PEATabuSearch.Algorithm
             }
 
         }
-
-        public void SetStopTime(double stoptime) => StopTime = stoptime;
 
         private void ResetSolution(ref int[] currentSol, ref int numIterationsNotChanged)
         {
